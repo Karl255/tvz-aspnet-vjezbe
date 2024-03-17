@@ -33,4 +33,18 @@ public record Fakultet
 	public Student NajboljiProsjek(int godina) => Osobe.OfType<Student>().Where(s => s.DatumRodjenja.Year == godina).MaxBy(s => s.Prosjek);
 
 	public IEnumerable<Student> StudentiGodinaOrdered(int godina) => Osobe.OfType<Student>().Where(s => s.DatumRodjenja.Year == godina).OrderByDescending(s => s.Prosjek);
+
+	public IEnumerable<Profesor> SviProfesori(bool ascending)
+	{
+		var profesori = Osobe.OfType<Profesor>();
+
+		if (ascending)
+		{
+			return profesori.OrderBy(p => p.Prezime).ThenBy(p => p.Ime);
+		}
+		else
+		{
+			return profesori.OrderByDescending(p => p.Prezime).ThenByDescending(p => p.Ime);
+		}
+	}
 }
