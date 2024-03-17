@@ -49,4 +49,8 @@ public record Fakultet
 	}
 
 	public int KolikoProfesoraUZvanju(Zvanje zvanje) => Osobe.OfType<Profesor>().Count(p => p.Zvanje == zvanje);
+
+	private static readonly List<Zvanje> NeaktivniZvanje = [Zvanje.Predavac, Zvanje.VisiPredavac];
+
+	public IEnumerable<Profesor> NeaktivniProfesori(int minPredmeta) => Osobe.OfType<Profesor>().Where(p => NeaktivniZvanje.Contains(p.Zvanje) && p.Predmeti.Count < minPredmeta);
 }
