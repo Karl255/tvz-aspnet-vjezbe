@@ -47,4 +47,6 @@ public record Fakultet
 			return profesori.OrderByDescending(p => p.Prezime).ThenByDescending(p => p.Ime);
 		}
 	}
+
+	public int KolikoProfesoraUZvanju(Zvanje zvanje) => Osobe.OfType<Profesor>().Count(p => p.Zvanje == zvanje);
 }
