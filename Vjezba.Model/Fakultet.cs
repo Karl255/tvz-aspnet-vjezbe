@@ -25,4 +25,6 @@ public record Fakultet
 			}
 		}
 	}
+
+	public IEnumerable<Student> StudentiNeTvzD() => Osobe.OfType<Student>().Where(s => !s.JMBAG.StartsWith("0246") && s.Prezime.StartsWith('D'));
 }
