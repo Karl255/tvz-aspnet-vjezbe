@@ -55,4 +55,6 @@ public record Fakultet
 	public IEnumerable<Profesor> NeaktivniProfesori(int minPredmeta) => Osobe.OfType<Profesor>().Where(p => NeaktivniZvanje.Contains(p.Zvanje) && p.Predmeti.Count < minPredmeta);
 
 	public IEnumerable<Profesor> AktivniAsistenti(int minPredmeta, int minEcts) => Osobe.OfType<Profesor>().Where(p => p.Zvanje == Zvanje.Asistent && p.Predmeti.Count(predmet => predmet.ECTS >= minEcts) > minPredmeta);
+
+	public void IzmjeniProfesore(Action<Profesor> profesorConsumer) => Osobe.OfType<Profesor>().ToList().ForEach(profesorConsumer);
 }
