@@ -31,4 +31,6 @@ public record Fakultet
 	public List<Student> DohvatiStudente91List() => Osobe.OfType<Student>().Where(s => s.DatumRodjenja.Year > 1991).ToList();
 
 	public Student NajboljiProsjek(int godina) => Osobe.OfType<Student>().Where(s => s.DatumRodjenja.Year == godina).MaxBy(s => s.Prosjek);
+
+	public IEnumerable<Student> StudentiGodinaOrdered(int godina) => Osobe.OfType<Student>().Where(s => s.DatumRodjenja.Year == godina).OrderByDescending(s => s.Prosjek);
 }
