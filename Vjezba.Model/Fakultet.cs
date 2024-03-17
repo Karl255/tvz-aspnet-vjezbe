@@ -27,4 +27,6 @@ public record Fakultet
 	}
 
 	public IEnumerable<Student> StudentiNeTvzD() => Osobe.OfType<Student>().Where(s => !s.JMBAG.StartsWith("0246") && s.Prezime.StartsWith('D'));
+
+	public List<Student> DohvatiStudente91List() => Osobe.OfType<Student>().Where(s => s.DatumRodjenja.Year > 1991).ToList();
 }
