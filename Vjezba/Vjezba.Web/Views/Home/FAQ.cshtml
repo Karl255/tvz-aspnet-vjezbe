@@ -1,0 +1,54 @@
+﻿@model FAQViewModel
+@{
+	ViewData["Title"] = "FAQ";
+}
+
+<h1>FAQ</h1>
+
+<ul class="faq">
+    @for (int i = 0; i < Model.QuestionsAndAnswers.Count; i++)
+    {
+        var (question, answer) = Model.QuestionsAndAnswers[i];
+        <li class="@(i + 1 == Model.Selected ? "highlight" : "")">
+            <h2>@question</h2>
+            <p>@answer</p>
+        </li>
+    }
+</ul>
+
+<style>
+    h1 {
+        margin-bottom: 1rem;
+    }
+
+    .faq {
+        list-style: none;
+        padding: 0;
+    }
+
+    .faq > * + * {
+        margin-top: 1rem;
+    }
+
+    .faq h2 {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .faq h2::before {
+        content: "Q: ";
+    }
+
+    .faq p::before {
+        content: "A: ";
+    }
+
+    .highlight {
+        animation: highlight 2s ease-in;
+    }
+
+    @@keyframes highlight {
+        from { background-color: salmon; }
+        to { background-color: transparent; }
+    }
+</style>
