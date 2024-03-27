@@ -1,56 +1,70 @@
 ﻿@{
-    ViewData["Title"] = "Contact page";
+ViewData["Title"] = "Contact page";
 }
 <h1>@ViewData["Title"]</h1>
 
 <p>Podaci koji su proslijeđeni iz controller-a: @ViewData["Message"]</p>
 
-<form asp-area="" asp-controller="Home" asp-action="SubmitQuery" method="post">
-    <div class="row mb-3">
-        <div class="col-md-6">
-            <div class="form-group">
-				<label class="form-label fw-bold" for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" />
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-				<label class="form-label fw-bold" for="surname">Surname</label>
-                <input type="text" class="form-control" id="surname" name="surname" />
-            </div>
-        </div>
-    </div>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contact">Kontaktirajte nas!</button>
 
-	<div class="mb-3">
-        <label class="form-label fw-bold" for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" />
-    </div>
+<div class="modal" id="contact">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="modal-title">Contact form</div>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" title="close"></button>
+			</div>
 
-	<div class="mb-3">
-        <label class="form-label fw-bold" for="message">Message</label>
-        <textarea class="form-control" id="message" name="message"></textarea>
-    </div>
+			<div class="modal-body">
+				<form asp-area="" asp-controller="Home" asp-action="SubmitQuery" method="post">
+					<div class="row mb-3">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="form-label fw-bold" for="name">Name</label>
+								<input type="text" class="form-control" id="name" name="name" />
+							</div>
+						</div>
 
-	<div class="mb-3">
-        <label class="form-label fw-bold" for="messageType">Message type</label>
-        <select class="form-select" id="messageType" name="messageType">
-            <option value="pohvala">Pohvala</option>
-            <option value="upit">Upit</option>
-            <option value="poslovni prijedlog">Poslovni prijedlog</option>
-            <option value="žalba">Žalba</option>
-        </select>
-    </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="form-label fw-bold" for="surname">Surname</label>
+								<input type="text" class="form-control" id="surname" name="surname" />
+							</div>
+						</div>
+					</div>
 
-	<div class="row">
-        <div class="col-12 col-sm-6">
-		    <div class="form-check mb-3">
-			    <input type="checkbox" class="form-check-input" id="receiveNewsletter" name="receiveNewsletter" checked /> <!-- naravno checked :) -->
-			    <label class="form-check-label" for="receiveNewsletter">Receive newsletter</label>
-		    </div>
-        </div>
+					<div class="mb-3">
+						<label class="form-label fw-bold" for="email">Email</label>
+						<input type="email" class="form-control" id="email" name="email" />
+					</div>
 
-		<div class="col-12 col-sm-6 d-flex justify-content-end">
-            <button class="btn btn-primary" type="submit">Submit</button>
-        </div>
-    </div>
-</form>
+					<div class="mb-3">
+						<label class="form-label fw-bold" for="message">Message</label>
+						<textarea class="form-control" id="message" name="message"></textarea>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label fw-bold" for="messageType">Message type</label>
+						<select class="form-select" id="messageType" name="messageType">
+							<option value="pohvala">Pohvala</option>
+							<option value="upit">Upit</option>
+							<option value="poslovni prijedlog">Poslovni prijedlog</option>
+							<option value="žalba">Žalba</option>
+						</select>
+					</div>
+
+					<div class="form-check">
+						<input type="checkbox" class="form-check-input" id="receiveNewsletter" name="receiveNewsletter" checked /> <!-- naravno checked :) -->
+						<label class="form-check-label" for="receiveNewsletter">Receive newsletter</label>
+					</div>
+
+				</form>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odustani</button>
+				<button type="button" class="btn btn-primary" title="close">Pošalji</button>
+			</div>
+		</div>
+	</div>
+</div>
